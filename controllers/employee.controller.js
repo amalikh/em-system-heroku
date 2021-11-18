@@ -1,0 +1,129 @@
+const db = require("../models");
+const Employee = db.employee;
+const multer = require('multer');
+
+const Op = db.Sequelize.Op;
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads');
+      },
+    filename: function (req, file, cb) {
+        // cb(null, new Date().toISOString() + file.originalname);
+        cb(null, file.originalname);
+
+    }
+});
+
+const fileFilter = (req, file, cb) =>{
+if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+} else {
+    cb(null, false);
+}
+};
+exports.uploadImg = multer({storage: storage, limits:{fileSize:1024*1024*5}, fileFilter:fileFilter}).single('current_photo');
+
+// Retrieve all Attendances from the database.
+exports.findAll = (req, res) => {
+    Employee.findAll()
+    .then((data) => {
+        res.json(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+  };
+
+
+// Create and Save a new Attendance
+exports.create = (req, res, next) => {
+    console.log("This is a file "+ req.file.path);
+    // user.findAll().then((user) => {
+    //     if (user.length >= 1) {
+    //         return res.status(409).json({
+    //             message: 'Mail exists'
+    //         });
+    //     } else {
+    // bcrypt.hash(req.body.password, 10, (err, hash) => {
+    //     if (err) {
+    //         return res.status(500).json({
+    //             error: err
+    //         });
+    //     } else {
+        Employee.create({
+                name: req.body.name,
+                father_name: req.body.father_name,
+                dob: req.body.dob,
+                doj: req.body.doj,
+                designation: req.body.designation,
+                communication_add: req.body.communication_add,
+                permanent_add: req.body.permanent_add,
+                current_photo: req.file.path,
+                contact_no: req.body.contact_no,
+                email: req.body.email,
+                salary: req.body.salary
+            }).then((employee) => {
+                res.json(employee);
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    error: err
+                });
+            });
+        // }
+    // });
+    // }
+// });
+};
+
+exports.create = (req, res, next) => {
+        Employee.create({
+                name: req.body.name,
+                father_name: req.body.father_name,
+                dob: req.body.dob,
+                doj: req.body.doj,
+                designation: req.body.designation,
+                communication_add: req.body.communication_add,
+                permanent_add: req.body.permanent_add,
+                current_photo: req.body.current_photo,
+                contact_no: req.body.contact_no,
+                email: req.body.email,
+                salary: req.body.salary
+            }).then((employee) => {
+                res.json(employee);
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    error: err
+                });
+            });
+};
+
+
+// Update a employee by the id in the request
+exports.update = (req, res) => {
+    const id = req.body.id;
+  
+    Employee.update(req.body, {
+      where: { id: id }
+    })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "employee was updated successfully."
+          });
+        } else {
+          res.send({
+            message: `Cannot update Employee with id=${id}. Maybe Employee was not found or req.body is empty!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating Employee with id=" + id
+        });
+      });
+  };
