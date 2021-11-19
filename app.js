@@ -43,16 +43,16 @@ app.use('/payroll', payrollRoutes);
 const db = require("./models");
 db.sequelize.sync();
 
-app.get("/", (req, res) => {
-    res.send("Welcom world...");
-});
-
-
+// app.get("/", (req, res) => {
+//     res.send("Welcom world...");
+// });
 // app.get("/image.png", (req, res) => {
 //     res.sendFile(path.join(__dirname, "./uploads/image.png"));
 //   });
-
-
+app.use(express.static(__dirname + '/dist'));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "/dist/index.html"));
+});
 app.listen(PORT, () => {
     console.log(`Server started (http://localhost:${PORT}/) !`);
 });
