@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "14.17.3",
+    "npm": "6.14.13"
+},
   "scripts": {
     "make-model": "npx sequelize-cli model:generate --name Emp --attributes email:string",
     "migrate": "npx sequelize-cli db:migrate",
