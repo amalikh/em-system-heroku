@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 // app.get("/image.png", (req, res) => {
 //     res.sendFile(path.join(__dirname, "./uploads/image.png"));
 //   });
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/public'));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/dist/index.html"));
 });
