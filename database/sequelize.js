@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 const dbconfig = require("./../database/dbconfig");
 const dbConfig = require("./../database/dbconfig");
+var pg = require('pg');
+pg.defaults.ssl = true;
 module.exports = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.dialect,
@@ -11,6 +13,9 @@ module.exports = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
         idle: dbConfig.pool.idle
     },
     dialectOptions: {
-        ssl: dbconfig.dialectOptions.ssl
+        ssl: {
+            require: true, // This will help you. But you will see nwe error
+            rejectUnauthorized: false // This line will fix new error
+          }
       }
 });
