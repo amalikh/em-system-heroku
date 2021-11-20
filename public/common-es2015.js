@@ -110,6 +110,7 @@ const HEADERS = {
 let ApiService = class ApiService {
     constructor(http) {
         this.http = http;
+        this.base_url = "http://em-system-heroku.herokuapp.com/";
     }
     getAllEmployee() {
         return this.http.get("http://localhost:3000/employee/all")
@@ -118,7 +119,7 @@ let ApiService = class ApiService {
         }));
     }
     postUser(data) {
-        return this.http.post("http://localhost:3000/user/signup", data)
+        return this.http.post(this.base_url + "user/signup", data)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     deleteEmployee(id) {

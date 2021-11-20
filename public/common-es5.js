@@ -177,6 +177,7 @@
           _classCallCheck(this, ApiService);
 
           this.http = http;
+          this.base_url = "http://em-system-heroku.herokuapp.com/";
         }
 
         _createClass(ApiService, [{
@@ -189,7 +190,7 @@
         }, {
           key: "postUser",
           value: function postUser(data) {
-            return this.http.post("http://localhost:3000/user/signup", data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) {
+            return this.http.post(this.base_url + "user/signup", data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) {
               return res;
             }));
           }
