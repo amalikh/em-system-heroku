@@ -110,10 +110,10 @@ const HEADERS = {
 let ApiService = class ApiService {
     constructor(http) {
         this.http = http;
-        this.base_url = "http://em-system-heroku.herokuapp.com/";
+        this.base_url = "http://localhost:3000/";
     }
     getAllEmployee() {
-        return this.http.get("http://localhost:3000/employee/all")
+        return this.http.get(this.base_url + "employee/all")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => {
             return res;
         }));
@@ -123,7 +123,7 @@ let ApiService = class ApiService {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     deleteEmployee(id) {
-        return this.http.delete("http://localhost:3000/user/" + id)
+        return this.http.delete(this.base_url + "user/" + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => {
             return res;
         }));
@@ -135,44 +135,44 @@ let ApiService = class ApiService {
         }));
     }
     login(data) {
-        return this.http.post("http://localhost:3000/user/login", data)
+        return this.http.post(this.base_url + "user/login", data)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => {
             return res;
         }));
     }
     getusername() {
-        return this.http.get("http://localhost:3000/user/dashboard", {
+        return this.http.get(this.base_url + "user/dashboard", {
             observe: 'body',
             // params: new HttpParams().append('token', localStorage.getItem('token')),
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
         });
     }
     postAttendance(data) {
-        return this.http.post("http://localhost:3000/attendance/daily", data)
+        return this.http.post(this.base_url + "attendance/daily", data)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     postLeave(data) {
-        return this.http.post("http://localhost:3000/leave/add", data)
+        return this.http.post(this.base_url + "leave/add", data)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     postEmployee(data) {
-        return this.http.post("http://localhost:3000/employee/new", data, HEADERS)
+        return this.http.post(this.base_url + "employee/new", data, HEADERS)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     postPayroll(data) {
-        return this.http.post("http://localhost:3000/payroll/add", data, HEADERS)
+        return this.http.post(this.base_url + "payroll/add", data, HEADERS)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     getPayrolls() {
-        return this.http.get("http://localhost:3000/payroll/all")
+        return this.http.get(this.base_url + "payroll/all")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     getAllAttendance() {
-        return this.http.get("http://localhost:3000/attendance/all")
+        return this.http.get(this.base_url + "attendance/all")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
     getAllLeave() {
-        return this.http.get("http://localhost:3000/leave/all")
+        return this.http.get(this.base_url + "leave/all")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((res) => { return res; }));
     }
 };
