@@ -50,9 +50,9 @@ app.use('/payroll', payrollRoutes);
 const db = require("./models");
 db.sequelize.sync();
 
-app.get("/", (req, res) => {
-    res.send("Welcom world...");
-});
+// app.get("/", (req, res) => {
+//     res.send("Welcom world...");
+// });
 
 app.use(express.static(__dirname + '/public'));
 app.get("/", (req, res) => {
