@@ -9,6 +9,8 @@ const empRoutes = require('./routes/emp');
 const attendanceRoutes = require('./routes/atten');
 const leaveRoutes = require('./routes/leave');
 const payrollRoutes = require('./routes/payrollRoutes');
+const roleRoutes = require('./routes/roleRoutes');
+
 // function requireHTTPS(req, res, next) {
 //     // The 'x-forwarded-proto' check is for Heroku
 //     if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
@@ -45,6 +47,7 @@ app.use('/employee', empRoutes);
 app.use('/attendance', attendanceRoutes);
 app.use('/leave', leaveRoutes);
 app.use('/payroll', payrollRoutes);
+app.use('/role', roleRoutes);
 
 
 const db = require("./models");
