@@ -23,8 +23,8 @@ exports.findAll = (req, res) => {
 exports.create = (req, res, next) => {
         Role.create({
                 name: req.body.name,
-            }).then((employee) => {
-                res.json(employee);
+            }).then((role) => {
+                res.json(role);
             }).catch(err => {
                 console.log(err);
                 res.status(500).json({
