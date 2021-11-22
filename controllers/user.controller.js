@@ -81,7 +81,7 @@ exports.signup = (req, res, next) => {
                 name: req.body.name,
                 email: req.body.email,
                 password: hash,
-                role_d: req.body.role_id
+                role_id: req.body.role_id
             }).then((user) => {
                 res.json(user);
             }).catch(err => {

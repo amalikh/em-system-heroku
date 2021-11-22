@@ -20,10 +20,11 @@ module.exports = {
     PASSWORD: "268048cb831bf489ae3a44c0588f90885b17c240328ab6dc10331ec31ff7731f",
     DB: "d4qhk2pk3opuf1",
     dialect: "postgres",
-    dialectOptions: {
-      ssl: true,
-      rejectUnauthorized: false
-    },
+    // ssl:true,
+    // dialectOptions: {
+    //   ssl: true,
+    //   rejectUnauthorized: false
+    // },
     pool: {
       max: 5,
       min: 0,
@@ -31,3 +32,5 @@ module.exports = {
       idle: 10000
     }
   };
+
+  //DATABASE_URL=postgres://username:password@localhost:5432/yourdatabase

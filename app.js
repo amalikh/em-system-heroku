@@ -2,14 +2,21 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const Sequelize = require("sequelize");
 const { Op } = Sequelize;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 const userRoutes = require('./routes/user');
 const empRoutes = require('./routes/emp');
 const attendanceRoutes = require('./routes/atten');
 const leaveRoutes = require('./routes/leave');
 const payrollRoutes = require('./routes/payrollRoutes');
-
+function requireHTTPS(req, res, next) {
+    // The 'x-forwarded-proto' check is for Heroku
+    if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
+        return res.redirect('https://' + req.get('host') + req.url);
+    }
+    next();
+}
+app.use(requireHTTPS);
 
 
 const app = express();
@@ -46,12 +53,10 @@ db.sequelize.sync();
 app.get("/", (req, res) => {
     res.send("Welcom world...");
 });
-// app.get("/image.png", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./uploads/image.png"));
-//   });
-app.use(express.static(__dirname + '/dist'));
+
+app.use(express.static(__dirname + '/public'));
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "/dist/index.html"));
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 app.listen(PORT, () => {
     console.log(`Server started (http://localhost:${PORT}/) !`);
