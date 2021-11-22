@@ -12205,7 +12205,7 @@ const routes = [
         path: '',
         component: _layout_component__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"],
         children: [
-            { path: '', redirectTo: 'newtask', pathMatch: 'prefix' },
+            { path: '', redirectTo: 'login', pathMatch: 'prefix' },
             {
                 path: 'blank-page',
                 loadChildren: () => __webpack_require__.e(/*! import() | blank-page-blank-page-module */ "blank-page-blank-page-module").then(__webpack_require__.bind(null, /*! ./blank-page/blank-page.module */ "yUho")).then((m) => m.BlankPageModule)
@@ -13125,7 +13125,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://localhost:3000/uploads';
+const URL = 'https://em-system-heroku.herokuapp.com/uploads';
 let EmployeeComponent = class EmployeeComponent {
     // public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'current_photo' });
     constructor(formbuilder, api) {
@@ -13444,7 +13444,7 @@ let DashboardComponent = class DashboardComponent {
         this.modalService = modalService;
         this.employeeModelObj = new _employee_employee_model__WEBPACK_IMPORTED_MODULE_9__["EmployeeModel"]();
         this.name = '';
-        this.baseurl = "http://localhost:3000/";
+        this.baseurl = "https://em-system-heroku.herokuapp.com/";
         this.api.getusername()
             .subscribe(data => this.name = data.toString(), error => this.router.navigate(['/login']));
     }

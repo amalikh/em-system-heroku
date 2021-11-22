@@ -21759,7 +21759,7 @@
         component: _layout_component__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"],
         children: [{
           path: '',
-          redirectTo: 'newtask',
+          redirectTo: 'login',
           pathMatch: 'prefix'
         }, {
           path: 'blank-page',
@@ -23664,7 +23664,7 @@
       /*! @angular/common */
       "ofXK");
 
-      var URL = 'http://localhost:3000/uploads';
+      var URL = 'https://em-system-heroku.herokuapp.com/uploads';
 
       var EmployeeComponent = /*#__PURE__*/function () {
         // public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'current_photo' });
@@ -24141,7 +24141,7 @@
           this.modalService = modalService;
           this.employeeModelObj = new _employee_employee_model__WEBPACK_IMPORTED_MODULE_9__["EmployeeModel"]();
           this.name = '';
-          this.baseurl = "http://localhost:3000/";
+          this.baseurl = "https://em-system-heroku.herokuapp.com/";
           this.api.getusername().subscribe(function (data) {
             return _this69.name = data.toString();
           }, function (error) {

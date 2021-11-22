@@ -1412,7 +1412,7 @@
           value: function signUp() {
             var _this = this;
 
-            this.http.post("http://localhost:3000/user/signup", this.signupForm.value).subscribe(function (res) {
+            this.http.post("https://em-system-heroku.herokuapp.com/user/signup", this.signupForm.value).subscribe(function (res) {
               alert("signup successful");
 
               _this.signupForm.reset();
