@@ -9,7 +9,7 @@ router.post("/daily", attendances.create);
 
 // Retrieve all Tutorials
 router.get("/all", attendances.findAll);
-
+router.get("/allWithCurrentDate", attendances.findAllWithCurrentDate)
 
 
 

@@ -19,10 +19,10 @@ module.exports  = (sequelize, DataTypes) => {
         type: DataTypes.TIME
     },
     date_of_attendance: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     }
 }, {
-    timestamps: true,
+    // timestamps: true,
     underscored:true,
     paranoid:true
 });
