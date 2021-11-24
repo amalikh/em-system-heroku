@@ -1,36 +1,36 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "postgres",
-    PASSWORD: "postgre@123",
-    DB: "postgres",
-    dialect: "postgres",
-    dialectOptions: {
-        ssl: true,
-        rejectUnauthorized: false
-      },
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-
-    // HOST: "ec2-18-204-69-8.compute-1.amazonaws.com",
-    // USER: "mnzlwejzyvuwff",
-    // PASSWORD: "268048cb831bf489ae3a44c0588f90885b17c240328ab6dc10331ec31ff7731f",
-    // DB: "d4qhk2pk3opuf1",
+    // HOST: "localhost",
+    // USER: "postgres",
+    // PASSWORD: "postgre@123",
+    // DB: "postgres",
     // dialect: "postgres",
-    // // ssl:true,
-    // // dialectOptions: {
-    // //   ssl: true,
-    // //   rejectUnauthorized: false
-    // // },
+    // dialectOptions: {
+    //     ssl: true,
+    //     rejectUnauthorized: false
+    //   },
     // pool: {
     //   max: 5,
     //   min: 0,
     //   acquire: 30000,
     //   idle: 10000
     // }
+
+    HOST: "ec2-18-204-69-8.compute-1.amazonaws.com",
+    USER: "mnzlwejzyvuwff",
+    PASSWORD: "268048cb831bf489ae3a44c0588f90885b17c240328ab6dc10331ec31ff7731f",
+    DB: "d4qhk2pk3opuf1",
+    dialect: "postgres",
+    // ssl:true,
+    // dialectOptions: {
+    //   ssl: true,
+    //   rejectUnauthorized: false
+    // },
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
   };
 
   //DATABASE_URL=postgres://username:password@localhost:5432/yourdatabase
