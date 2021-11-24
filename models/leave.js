@@ -20,10 +20,10 @@ module.exports  = (sequelize, DataTypes) => {
         type: DataTypes.STRING
     },
     from_date:{
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     to_date:{
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     description: {
         type: DataTypes.STRING
