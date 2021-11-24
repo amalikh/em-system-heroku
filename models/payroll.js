@@ -22,10 +22,10 @@ module.exports  = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
     },
     last_increment_date: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     last_salary_release_date: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     }
 }, {
     timestamps: true,

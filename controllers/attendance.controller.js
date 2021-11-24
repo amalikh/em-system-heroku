@@ -161,7 +161,17 @@ exports.findAllWithCurrentDate = (req, res) => {
   const dateNow = new Date();
   let dateToday = dateNow.toISOString().slice(0,10);
   console.log("Current date is " + dateToday);
-  Attendance.findAll({ where: { date_of_attendance: dateToday } })
+  Attendance.findAll({ 
+    where: { date_of_attendance: dateToday,
+    date_of_attendance:null },
+    attributes:{exclude: ['createdAt', 'updatedAt', 'deletedAt']},
+    include:
+    {
+      model: Employee,
+      as: 'employee',
+      attributes: ['name','id','current_photo']
+  },
+   })
     .then((data) => {
       res.json(data);
     })
@@ -172,3 +182,4 @@ exports.findAllWithCurrentDate = (req, res) => {
       });
     });
 };
+

@@ -22,7 +22,7 @@ module.exports  = (sequelize, DataTypes) => {
         type: DataTypes.DATEONLY
     }
 }, {
-    // timestamps: true,
+    timestamps: true,
     underscored:true,
     paranoid:true
 });
