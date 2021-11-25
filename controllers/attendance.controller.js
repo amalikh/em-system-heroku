@@ -260,6 +260,7 @@ const s = 'Present';
           {
             where: { employees_id: req.body.employees_id,
               date_of_attendance: req.body.date_of_attendance,
+              status:s
            }
           })
           .then(data => {
