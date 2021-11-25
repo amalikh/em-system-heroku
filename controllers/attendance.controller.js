@@ -251,7 +251,7 @@ exports.createAttendance = (req, res) => {
                 err.message || "Some error occurred while creating the attendance."
             });
           });
-      } else {
+      } else if (attendance.length = 1) {
 
         const id = req.body.id;
        
@@ -275,6 +275,11 @@ exports.createAttendance = (req, res) => {
             });
           });
 
+      }
+      else{
+        res.send({
+          message: "You Already marked your attendance.",
+        });
       }
     });
 
