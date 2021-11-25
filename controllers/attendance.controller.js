@@ -251,8 +251,7 @@ const s = 'Present';
                 err.message || "Some error occurred while creating the attendance."
             });
           });
-      } 
-      if (attendance.length >= 1 && attendance.status == 'Present' ) {
+      } else {
 
         const id = req.body.id;
   
@@ -276,11 +275,6 @@ const s = 'Present';
             });
           });
 
-      }
-      else{
-        res.send({
-          message: "You Already marked your attendance.",
-        });
       }
     });
 
