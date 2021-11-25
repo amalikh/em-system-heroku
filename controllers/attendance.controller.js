@@ -251,7 +251,7 @@ const s = 'Present';
                 err.message || "Some error occurred while creating the attendance."
             });
           });
-      } else if (attendance.length = 1) {
+      } else if (attendance.length == 1 && attendance.status == s ) {
 
         const id = req.body.id;
   
