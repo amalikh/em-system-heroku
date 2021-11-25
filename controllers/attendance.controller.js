@@ -78,13 +78,13 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Tutorial.update(req.body, {
+  Attendance.update(req.body, {
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Tutorial was updated successfully."
+          message: "Attendance was updated successfully."
         });
       } else {
         res.send({
@@ -188,14 +188,14 @@ exports.findAllPublished = (req, res) => {
 
 exports.findAllWithCurrentDate = (req, res) => {
   const dateNow = new Date();
-  let dateToday = dateNow.toISOString().slice(0,10);
+  let dateToday = dateNow.toISOString().slice(0, 10);
   console.log("Current date is " + dateToday);
-  Attendance.findAll({ 
+  Attendance.findAll({
     where: {
       date_of_attendance: dateToday
     },
-    attributes:{exclude: ['createdAt', 'updatedAt', 'deletedAt']},
-   })
+    attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+  })
     .then((data) => {
       res.json(data);
     })
@@ -205,4 +205,76 @@ exports.findAllWithCurrentDate = (req, res) => {
           err.message || "Some error occurred while retrieving attendance."
       });
     });
+};
+
+// exports.createAttendance = (req, res) => {
+//   const id = req.body.id;
+//    Attendance.findAll().then((user) => {
+//         if (user.length >= 1) {
+//             return res.status(409).json({
+//                 message: 'Mail exists'
+//             });
+
+
+exports.createAttendance = (req, res) => {
+
+  let date_ob = new Date();
+  let hours = date_ob.getHours();
+  let minutes = date_ob.getMinutes();
+  let TimeNow = (hours + ":" + minutes);
+
+  const attendanceObject = {
+    status: req.body.status,
+    in_time: TimeNow,
+    out_time: null,
+    date_of_attendance: req.body.date_of_attendance,
+    employees_id: req.body.employees_id
+  };
+
+  
+  Attendance.findAll({
+    where: {
+      employees_id: req.body.employees_id,
+      date_of_attendance: req.body.date_of_attendance
+    }
+  })
+    .then(attendance => {
+      if (attendance.length < 1) {
+
+        Attendance.create(attendanceObject)
+          .then(data => {
+            res.json(data);
+          })
+          .catch(err => {
+            res.status(500).send({
+              message:
+                err.message || "Some error occurred while creating the attendance."
+            });
+          });
+      } else {
+
+        const id = req.body.id;
+       
+        Attendance.update(
+          { out_time: TimeNow },
+          {
+            where: { employees_id: req.body.employees_id,
+              date_of_attendance: req.body.date_of_attendance }
+          })
+          .then(data => {
+            res.send({
+              message: "attendance updated successfully.",
+              data
+            });
+
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: "Error updating Attendance with id=" + id
+            });
+          });
+
+      }
+    });
+
 };
