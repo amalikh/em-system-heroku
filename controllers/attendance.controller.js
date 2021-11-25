@@ -225,7 +225,7 @@ exports.createAttendance = (req, res) => {
 
   const attendanceObject = {
     status: req.body.status,
-    in_time: TimeNow,
+    in_time: req.body.in_time,
     out_time: null,
     date_of_attendance: req.body.date_of_attendance,
     employees_id: req.body.employees_id
@@ -259,7 +259,8 @@ exports.createAttendance = (req, res) => {
           { out_time: TimeNow },
           {
             where: { employees_id: req.body.employees_id,
-              date_of_attendance: req.body.date_of_attendance }
+              date_of_attendance: req.body.date_of_attendance,
+            status:'Present' }
           })
           .then(data => {
             res.send({
