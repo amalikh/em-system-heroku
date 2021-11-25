@@ -157,20 +157,44 @@ exports.findAllPublished = (req, res) => {
 };
 
 //todays attendance donecheck
+// exports.findAllWithCurrentDate = (req, res) => {
+//   const dateNow = new Date();
+//   let dateToday = dateNow.toISOString().slice(0,10);
+//   console.log("Current date is " + dateToday);
+//   Attendance.findAll({ 
+//     where: {
+//       [Op.or]: [{date_of_attendance: dateToday}, {date_of_attendance: null}]
+//     },
+//     attributes:{exclude: ['createdAt', 'updatedAt', 'deletedAt']},
+//     include:
+//     {
+//       model: Employee,
+//       as: 'employee',
+//       attributes: ['name','id','current_photo'],
+//       right:true,
+//   },
+//    })
+//     .then((data) => {
+//       res.json(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error occurred while retrieving attendance."
+//       });
+//     });
+// };
+
+
 exports.findAllWithCurrentDate = (req, res) => {
   const dateNow = new Date();
   let dateToday = dateNow.toISOString().slice(0,10);
   console.log("Current date is " + dateToday);
   Attendance.findAll({ 
-    where: { date_of_attendance: dateToday,
-    date_of_attendance:null },
+    where: {
+      date_of_attendance: dateToday
+    },
     attributes:{exclude: ['createdAt', 'updatedAt', 'deletedAt']},
-    include:
-    {
-      model: Employee,
-      as: 'employee',
-      attributes: ['name','id','current_photo']
-  },
    })
     .then((data) => {
       res.json(data);
@@ -182,4 +206,3 @@ exports.findAllWithCurrentDate = (req, res) => {
       });
     });
 };
-
