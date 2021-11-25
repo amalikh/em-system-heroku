@@ -230,7 +230,7 @@ exports.createAttendance = (req, res) => {
     date_of_attendance: req.body.date_of_attendance,
     employees_id: req.body.employees_id
   };
-
+const s = 'Present';
   
   Attendance.findAll({
     where: {
@@ -251,16 +251,16 @@ exports.createAttendance = (req, res) => {
                 err.message || "Some error occurred while creating the attendance."
             });
           });
-      } else if (attendance.length = 1) {
+      } else if (attendance.length = 1 && attendance.status == s ) {
 
         const id = req.body.id;
-       
+  
         Attendance.update(
           { out_time: TimeNow },
           {
             where: { employees_id: req.body.employees_id,
               date_of_attendance: req.body.date_of_attendance,
-            status:'Present' }
+           }
           })
           .then(data => {
             res.send({
