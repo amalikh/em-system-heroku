@@ -17,10 +17,10 @@ module.exports  = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         dob: {
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         doj: {
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         designation: {
             type: DataTypes.STRING
