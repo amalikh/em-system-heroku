@@ -1,6 +1,6 @@
 const db = require("../models");
 const Employee = db.employee;
-const multer = require('multer');
+
 
 const Op = db.Sequelize.Op;
 
