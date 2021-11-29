@@ -13,16 +13,16 @@ module.exports  = (sequelize, DataTypes) => {
         type: DataTypes.STRING
     },
     in_time: {
-        type: DataTypes.DATETIME
+        type: DataTypes.TIME
     },
     out_time: {
-        type: DataTypes.DATETIME
+        type: DataTypes.TIME
     },
     date_of_attendance: {
         type: DataTypes.DATEONLY
     }
 }, {
-    
+    timestamps: true,
     underscored:true,
     paranoid:true
 });
