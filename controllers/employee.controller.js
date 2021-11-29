@@ -3,27 +3,9 @@ const Employee = db.employee;
 const multer = require('multer');
 
 const Op = db.Sequelize.Op;
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads');
-      },
-    filename: function (req, file, cb) {
-        // cb(null, new Date().toISOString() + file.originalname);
-        cb(null, file.originalname);
 
-    }
-});
 
-const fileFilter = (req, file, cb) =>{
-if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true);
-} else {
-    cb(null, false);
-}
-};
-exports.uploadImg = multer({storage: storage, limits:{fileSize:1024*1024*5}, fileFilter:fileFilter}).single('current_photo');
-
-// Retrieve all Attendances from the database.
+// Retrieve all employees from the database.
 exports.findAll = (req, res) => {
     Employee.findAll()
     .then((data) => {
@@ -127,3 +109,18 @@ exports.update = (req, res) => {
         });
       });
   };
+
+  // Retrieve all employees where is_active == true.
+exports.findAllActive = (req, res) => {
+  const is_active = 'true';
+  Employee.findAll({where: { is_active: is_active }})
+  .then((data) => {
+      res.json(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving tutorials."
+    });
+  });
+};

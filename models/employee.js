@@ -42,6 +42,9 @@ module.exports  = (sequelize, DataTypes) => {
         },
         salary: {
             type: DataTypes.INTEGER
+        },
+        is_active: {
+            type: DataTypes.STRING
         }
     }, {
         timestamps: true

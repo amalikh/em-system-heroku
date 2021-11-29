@@ -15,6 +15,7 @@ const employees = require("../controllers/employee.controller.js");
 
 // GET /employees
 router.get("/all", employees.findAll);
+router.get("/allActive", employees.findAllActive);
 
 // router.post('/add', employees.uploadImg, employees.create);
 router.post('/new', employees.create);
