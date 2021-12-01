@@ -1,6 +1,6 @@
 const db = require("../models");
 const Leave = db.leave;
-
+const Employee = db.employee;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Leave
@@ -38,15 +38,12 @@ Leave.create(leave)
 // Retrieve all leaves from the database.
 exports.findAll = (req, res) => {
   Leave.findAll({
-    // where: { id: req.body.employees_id },
-    attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
     include:
     {
         model: Employee,
         as: 'employee',
         attributes: ['name']
     }
-
 })
   .then((data) => {
       res.json(data);
@@ -54,7 +51,7 @@ exports.findAll = (req, res) => {
   .catch(err => {
     res.status(500).send({
       message:
-        err.message || "Some error occurred while retrieving tutorials."
+        err.message || "Some error occurred while retrieving leaves."
     });
   });
 };
