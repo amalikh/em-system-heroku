@@ -259,7 +259,7 @@ const s = 'Present';
         Attendance.update(
           { out_time: TimeNow },
           {
-            where: { employees_id: id,
+            where: { employees_id: req.body.employees_id,
               date_of_attendance: req.body.date_of_attendance,
               status:s
            }
