@@ -38,6 +38,8 @@ Leave.create(leave)
 // Retrieve all leaves from the database.
 exports.findAll = (req, res) => {
   Leave.findAll({
+    // where: { id: req.body.employees_id },
+    attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
     include:
     {
         model: Employee,
