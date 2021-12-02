@@ -45,7 +45,7 @@ exports.findAlll = (req, res) => {
             as: 'employee',
             attributes: ['id', 'name', 'basic_pay', 'is_active'],
             right: true,
-            required: true
+            required: false
         }
 
     })
