@@ -8,8 +8,8 @@ const payroll = require("../controllers/payroll.controller");
 router.post("/add", payroll.create);
 
 // Retrieve all Tutorials
-router.get("/all", payroll.findAlll);
-
+router.get("/alll", payroll.findAlll);
+router.get("/all", payroll.findAll);
 
 
 
