@@ -33,17 +33,17 @@ exports.create = (req, res) => {
 exports.findAlll = (req, res) => {
     Payroll.findAll({
 
-        where: {
-            $or: [
-                {'"employee"."is_active"' : true}
-            ]
-        },
+        // where: {
+        //     $or: [
+        //         {'"employee"."is_active"' : true}
+        //     ]
+        // },
 
         attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
         include:
         {
             model: Employee,
-            // where: { is_active: true },
+            where: { is_active: true },
             as: 'employee',
             attributes: ['id', 'name', 'basic_pay', 'is_active'],
             right: true,
