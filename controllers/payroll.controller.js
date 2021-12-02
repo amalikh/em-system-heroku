@@ -36,12 +36,7 @@ exports.findAlll = (req, res) => {
         include:
         {
             model: Employee,
-            where: {
-                $or: [
-                    { is_active: true },
-                ]
-
-            },
+            where: { is_active: true },
             as: 'employee',
             attributes: ['id', 'name', 'basic_pay', 'is_active'],
             right: true,
