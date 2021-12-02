@@ -9,9 +9,9 @@ module.exports  = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
     },
-    basic_pay: {
-        type: DataTypes.INTEGER
-    },
+    // basic_pay: {
+    //     type: DataTypes.INTEGER
+    // },
     allowance: {
         type: DataTypes.INTEGER
     },

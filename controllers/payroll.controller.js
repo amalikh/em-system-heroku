@@ -8,7 +8,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
 
     const payroll = {
-        basic_pay: req.body.basic_pay,
+        // basic_pay: req.body.basic_pay,
         allowance: req.body.allowance,
         current_salary: req.body.current_salary,
         last_increment: req.body.last_increment,
