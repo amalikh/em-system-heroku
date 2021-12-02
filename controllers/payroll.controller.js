@@ -37,12 +37,15 @@ exports.findAlll = (req, res) => {
         {
             model: Employee,
             where: {
-                [Op.or]: [{is_active: true}]
-                },
+                $or: [
+                    { is_active: true },
+                ]
+
+            },
             as: 'employee',
-            attributes: ['id','name','basic_pay','is_active'],
-            right:true,
-            required:false
+            attributes: ['id', 'name', 'basic_pay', 'is_active'],
+            right: true,
+            required: true
         }
 
     })
