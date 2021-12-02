@@ -40,9 +40,9 @@ module.exports  = (sequelize, DataTypes) => {
         email: {
             type: DataTypes.STRING
         },
-        salary: {
-            type: DataTypes.INTEGER
-        },
+        // basic_pay: {
+        //     type: DataTypes.INTEGER
+        // },
         is_active: {
             type: DataTypes.STRING
         }
