@@ -41,7 +41,7 @@ exports.findAlll = (req, res) => {
             right:true,
             where: {is_active: true},
             required: false
-        }
+        }, required: false
 
     })
         .then((data) => {

@@ -44,7 +44,7 @@ module.exports  = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         is_active: {
-            type: DataTypes.STRING
+            type: DataTypes.BOOLEAN
         }
     }, {
         timestamps: true
