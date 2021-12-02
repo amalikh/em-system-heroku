@@ -46,7 +46,8 @@ exports.create = (req, res, next) => {
                 current_photo: req.file.path,
                 contact_no: req.body.contact_no,
                 email: req.body.email,
-                basic_pay: req.body.basic_pay
+                basic_pay: req.body.basic_pay,
+                is_active:req.body.is_active
             }).then((employee) => {
                 res.json(employee);
             }).catch(err => {
@@ -73,7 +74,8 @@ exports.create = (req, res, next) => {
                 current_photo: req.body.current_photo,
                 contact_no: req.body.contact_no,
                 email: req.body.email,
-                basic_pay: req.body.basic_pay
+                basic_pay: req.body.basic_pay,
+                is_active:req.body.is_active
             }).then((employee) => {
                 res.json(employee);
             }).catch(err => {
