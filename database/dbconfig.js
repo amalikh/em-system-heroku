@@ -4,11 +4,6 @@ module.exports = {
     // PASSWORD: "postgre@123",
     // DB: "postgres",
     // dialect: "postgres",
-    // HOST: "localhost",
-    // USER: "mnzlwejzyvuwff",
-    // PASSWORD: "268048cb831bf489ae3a44c0588f90885b17c240328ab6dc10331ec31ff7731f",
-    // DB: "d4qhk2pk3opuf1",
-    // dialect: "postgres",
     // dialectOptions: {
     //     ssl: true,
     //     rejectUnauthorized: false
