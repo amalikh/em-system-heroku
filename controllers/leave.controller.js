@@ -56,6 +56,34 @@ exports.findAll = (req, res) => {
   });
 };
 
+// Update a leave by the id in the request
+exports.update = (req, res) => {
+  const id = req.body.id;
+
+  Leave.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "leave updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update Leave with id=${id}. Maybe Leave was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Leave with id=" + id
+      });
+    });
+};
+
+
+
+
 //retrieve attendance of an employee for a month
 exports.findByEmployee = (req, res) =>{
     const id = req.params.id;
