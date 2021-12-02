@@ -27,6 +27,8 @@ db.user = require("./user")(sequelize, Sequelize);
 db.role = require("./role")(sequelize, Sequelize);
 db.leave = require("./leave")(sequelize, Sequelize);
 db.payroll = require("./payroll")(sequelize, Sequelize);
+db.test = require("./test")(sequelize, Sequelize);
+
 
 
 //Relations
