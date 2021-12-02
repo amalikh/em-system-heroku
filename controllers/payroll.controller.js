@@ -33,15 +33,14 @@ exports.create = (req, res) => {
 exports.findAlll = (req, res) => {
     Payroll.findAll({
         attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+        where: { is_active: true },
         include:
         {
             model: Employee,
             as: 'employee',
-            attributes: ['id','name','basic_pay','is_active'],
+            attributes: ['id','name','basic_pay'],
             right:true,
-            where: {
-                is_active: true
-            }
+            
         }
 
     })
