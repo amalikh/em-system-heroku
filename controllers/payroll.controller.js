@@ -32,7 +32,6 @@ exports.create = (req, res) => {
 //Rerieve all payroll form the database right joining with employee emp name
 exports.findAlll = (req, res) => {
     Payroll.findAll({
-        where: { is_active: 'true' },
         attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
         include:
         {
@@ -40,6 +39,9 @@ exports.findAlll = (req, res) => {
             as: 'employee',
             attributes: ['id','name','basic_pay','is_active'],
             right:true,
+            where: {
+                is_active: true
+            }
         }
 
     })
