@@ -10,7 +10,10 @@ router.post("/add", leave.create);
 // Retrieve all Leaves
 router.get("/all", leave.findAll);
 
-//update leave
+ // Update a Leave with id
 router.put('/update/:id', leave.update);
+
+// Delete a Leave with id
+router.delete("/:id", leave.delete);
 
 module.exports = router;

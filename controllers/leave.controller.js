@@ -81,7 +81,30 @@ exports.update = (req, res) => {
     });
 };
 
+// Delete a Leave with the specified id in the request
+exports.delete = (req, res) => {
+  const id = req.params.id;
 
+  Leave.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Leave deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Leave with id=${id}. Maybe Leave was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Leave with id=" + id
+      });
+    });
+};
 
 
 //retrieve attendance of an employee for a month
@@ -107,56 +130,6 @@ exports.findOne = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message: "Error retrieving Tutorial with id=" + id
-        });
-      });
-  };
-
-// Update a Tutorial by the id in the request
-// exports.update = (req, res) => {
-//     const id = req.params.id;
-  
-//     Tutorial.update(req.body, {
-//       where: { id: id }
-//     })
-//       .then(num => {
-//         if (num == 1) {
-//           res.send({
-//             message: "Tutorial was updated successfully."
-//           });
-//         } else {
-//           res.send({
-//             message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Error updating Tutorial with id=" + id
-//         });
-//       });
-//   };
-
-// Delete a Tutorial with the specified id in the request
-exports.delete = (req, res) => {
-    const id = req.params.id;
-  
-    Tutorial.destroy({
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Tutorial was deleted successfully!"
-          });
-        } else {
-          res.send({
-            message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete Tutorial with id=" + id
         });
       });
   };
