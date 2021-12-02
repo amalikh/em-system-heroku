@@ -29,7 +29,7 @@ exports.create = (req, res) => {
         });
 };
 
-//Rerieve all payroll form the database left joining with employee emp name
+//Rerieve all payroll form the database right joining with employee emp name
 exports.findAlll = (req, res) => {
     Payroll.findAll({
         // where: { id: req.body.employees_id },
@@ -38,7 +38,8 @@ exports.findAlll = (req, res) => {
         {
             model: Employee,
             as: 'employee',
-            attributes: ['name']
+            attributes: ['id','name','basic_pay'],
+            right:true,
         }
 
     })
