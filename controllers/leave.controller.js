@@ -55,30 +55,10 @@ exports.findAll = (req, res) => {
 };
 
 // Update leave status = true by the id in the request
-exports.updateStatusTrue = (req, res) => {
+exports.updateLeaveStatus = (req, res) => {
   const id = req.params.id;
     Leave.update(
-      { status: true }, {
-      where: { id: id }
-    })
-    .then(data => {
-      res.send({
-        message: "leave status updated successfully.",
-        data
-      });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error updating employee status with id=" + id
-      });
-    });
-};
-
-// Update leave status = false by the id in the request
-exports.updateStatusFalse = (req, res) => {
-  const id = req.params.id;
-    Leave.update(
-      { status: false }, {
+      { status: req.body }, {
       where: { id: id }
     })
     .then(data => {
