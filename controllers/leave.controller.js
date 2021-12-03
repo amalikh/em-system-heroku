@@ -13,8 +13,7 @@ exports.create = (req, res) =>{
 //   return;
 // }
 const leave = {
-  category: req.body.category,
-  designation: req.body.designation,
+  status: req.body.status,
   leave_type:req.body.leave_type,
   from_date: req.body.from_date,
   to_date: req.body.to_date,
@@ -34,7 +33,6 @@ Leave.create(leave)
     });
 };
 
-
 // Retrieve all leaves from the database.
 exports.findAll = (req, res) => {
   Leave.findAll({
@@ -42,7 +40,7 @@ exports.findAll = (req, res) => {
     {
         model: Employee,
         as: 'employee',
-        attributes: ['name']
+        attributes: ['name','designation']
     }
 })
   .then((data) => {
@@ -56,7 +54,48 @@ exports.findAll = (req, res) => {
   });
 };
 
-// Update a leave by the id in the request
+// Update leave status = true by the id in the request
+exports.updateStatusTrue = (req, res) => {
+  const id = req.params.id;
+    Leave.update(
+      { status: true }, {
+      where: { id: id }
+    })
+    .then(data => {
+      res.send({
+        message: "leave status updated successfully.",
+        data
+      });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating employee status with id=" + id
+      });
+    });
+};
+
+// Update leave status = false by the id in the request
+exports.updateStatusFalse = (req, res) => {
+  const id = req.params.id;
+    Leave.update(
+      { status: fasle }, {
+      where: { id: id }
+    })
+    .then(data => {
+      res.send({
+        message: "leave status updated successfully.",
+        data
+      });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating employee status with id=" + id
+      });
+    });
+};
+
+
+// Update a leave by the id in the request (working)
 exports.update = (req, res) => {
   const id = req.params.id;
 
@@ -81,7 +120,7 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete a Leave with the specified id in the request
+// Delete a Leave with the specified id in the request (working)
 exports.delete = (req, res) => {
   const id = req.params.id;
 
@@ -134,34 +173,16 @@ exports.findOne = (req, res) => {
       });
   };
 
-// Delete all Tutorials from the database.
-exports.deleteAll = (req, res) => {
-    Tutorial.destroy({
-      where: {},
-      truncate: false
-    })
-      .then(nums => {
-        res.send({ message: `${nums} Tutorials were deleted successfully!` });
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while removing all tutorials."
-        });
-      });
-  };
-  
-
-// Find all published Tutorials
-exports.findAllPublished = (req, res) => {
-    Tutorial.findAll({ where: { published: true } })
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving tutorials."
-        });
-      });
-  };
+  // Retrieve all leaves from the database.
+exports.getAll = (req, res) => {
+  Leave.findAll()
+  .then((data) => {
+      res.json(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving leaves."
+    });
+  });
+};

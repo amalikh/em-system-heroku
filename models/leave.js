@@ -10,11 +10,8 @@ module.exports  = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
     },
-    category: {
-        type: DataTypes.STRING
-    },
-    designation: {
-        type: DataTypes.STRING
+    status: {
+        type: DataTypes.BOOLEAN
     },
     leave_type: {
         type: DataTypes.STRING

@@ -159,8 +159,8 @@ exports.updateIs_active = (req, res) => {
   const id = req.params.id;
 
   Employee.update(
-    { is_active: false }, {
-    where: { id: id }
+    { is_active: false }, 
+    { where: { id: id } 
   })
   .then(data => {
     res.send({

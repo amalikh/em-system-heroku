@@ -7,13 +7,24 @@ const leave = require("../controllers/leave.controller");
 // Create a new Leave
 router.post("/add", leave.create);
 
-// Retrieve all Leaves
+// Retrieve all Leaves with employee join
 router.get("/all", leave.findAll);
 
+
+// Retrieve all Leaves with employee join
+router.get("/getall", leave.getAll);
+
  // Update a Leave with id
-router.put('/update/:id', leave.update);
+// router.put('/update/:id', leave.update);
 
 // Delete a Leave with id
 router.delete("/:id", leave.delete);
+
+
+
+ // Update a Leave with id
+ router.put('/status_t/:id', leave.updateStatusTrue);
+ router.put('/status_f/:id', leave.updateStatusFalse);
+
 
 module.exports = router;
