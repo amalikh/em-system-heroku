@@ -26,5 +26,8 @@ router.put('/update/:id', employees.update);
 // Delete a Employee with id
 router.delete("/:id", employees.delete);
 
+ // Update a Employee with id
+ router.put('/delete/:id', employees.updateIs_active);
+
 
 module.exports = router;

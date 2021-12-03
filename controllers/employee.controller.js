@@ -152,3 +152,26 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+
+// Update employee status is_active=false by the id in the request
+exports.updateIs_active = (req, res) => {
+  const id = req.params.id;
+
+  Employee.update(
+    { is_active: false }, {
+    where: { id: id }
+  })
+  .then(data => {
+    res.send({
+      message: "employee status updated successfully.",
+      data
+    });
+
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: "Error updating employee status with id=" + id
+    });
+  });
+};
