@@ -128,7 +128,7 @@ exports.findAllActive = (req, res) => {
 };
 
 
-// Delete a Leave with the specified id in the request
+// Delete employee with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
