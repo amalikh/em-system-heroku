@@ -126,3 +126,29 @@ exports.findAllActive = (req, res) => {
     });
   });
 };
+
+
+// Delete a Leave with the specified id in the request
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Employee.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Employee deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Employee with id=${id}. Maybe Employee not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Employee with id=" + id
+      });
+    });
+};

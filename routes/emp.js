@@ -19,8 +19,12 @@ router.get("/allActive", employees.findAllActive);
 
 // router.post('/add', employees.uploadImg, employees.create);
 router.post('/new', employees.create);
+
+ // Update a Employee with id
 router.put('/update/:id', employees.update);
 
+// Delete a Employee with id
+router.delete("/:id", employees.delete);
 
 
 module.exports = router;
