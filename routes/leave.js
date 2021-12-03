@@ -23,7 +23,7 @@ router.delete("/:id", leave.delete);
 
 
  // Update a Leave with id
- router.put('/status_t/:id', leave.updateStatusTrue);
+ router.put('/status/:id', leave.updateLeaveStatus);
  router.put('/status_f/:id', leave.updateStatusFalse);
 
 
