@@ -58,7 +58,7 @@ exports.findAll = (req, res) => {
 exports.updateLeaveStatus = (req, res) => {
   const id = req.params.id;
     Leave.update(
-      { status: req.body }, {
+      { status: req.body.status }, {
       where: { id: id }
     })
     .then(data => {
