@@ -78,7 +78,7 @@ exports.updateStatusTrue = (req, res) => {
 exports.updateStatusFalse = (req, res) => {
   const id = req.params.id;
     Leave.update(
-      { status: fasle }, {
+      { status: false }, {
       where: { id: id }
     })
     .then(data => {
